@@ -1,0 +1,6 @@
+.git/
+.env
+.envrc
+.idea
+docker-compose.yml
+Dockerfile

@@ -1,22 +1,7 @@
 version: '3.3'
 
 services:
-  db:
-    env_file:
-      - .env
-    image: postgres:latest
-    restart: always
-    hostname: db
-    expose:
-      - 5432
-    environment:
-      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-      - POSTGRES_USER=${DATABASE_USERNAME}
-      - POSTGRES_DB=${DATABASE_DBNAME}
-    healthcheck:
-      test: exit 0
-
-  app:
+  buzzbird_app_ci:
     env_file:
       - .env
     restart: always
@@ -25,16 +10,15 @@ services:
     expose:
       - 3000
     build: .
-    hostname: app
-    depends_on:
-      - db
+    hostname: buzzbird_app_ci
     command: bash app.sh
+    network_mode: my-net
 
-  worker:
+  buzzbird_worker_ci:
     env_file:
       - .env
     restart: always
     build: .
     depends_on:
-      - app
+      - buzzbird_app_ci
     command: python3 manage.py qcluster
