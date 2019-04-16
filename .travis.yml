@@ -1,17 +1,18 @@
 services:
-  - docker
-
+- docker
 env:
   COMPOSE_VERSION: 1.18.0
-
 before_install:
- - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
- - chmod +x docker-compose
- - sudo mv docker-compose /usr/local/bin
-
+- openssl aes-256-cbc -K $encrypted_118398becd95_key -iv $encrypted_118398becd95_iv
+  -in travis.enc -out travis -d
+- curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname
+  -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
+addons:
+  ssh_known_hosts: 139.162.68.49
 script:
-  - docker-compose build
-
+- docker-compose build
 deploy:
   provider: script
   script: bash docker_push

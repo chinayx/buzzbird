@@ -3,3 +3,4 @@ echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 docker tag buzzbird_buzzbird_worker_ci:latest 
 docker push fredcc/buzzbird_app_ci
 docker push fredcc/buzzbird_worker_ci
+ssh cc@139.162.68.49 "hostname"
