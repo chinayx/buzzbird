@@ -10,10 +10,9 @@ before_install:
   -s`-`uname -m` > docker-compose
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
-- echo $ssh_host
+- echo ssh_host
 addons:
-  ssh_known_hosts: 
-    - "$ssh_host"
+  ssh_known_hosts: ssh_host
 script:
 - docker-compose build
 deploy:
