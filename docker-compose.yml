@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  buzzbird_app_ci:
+  app_ci:
 #    env_file:
 #      - .env
     restart: always
@@ -10,15 +10,15 @@ services:
     expose:
       - 3000
     build: .
+    image: fredcc/buzzbird_app_ci
     hostname: buzzbird_app_ci
     command: bash app.sh
 #    network_mode: my-net
 
-  buzzbird_worker_ci:
+  worker_ci:
 #    env_file:
 #      - .env
     restart: always
     build: .
-    depends_on:
-      - buzzbird_app_ci
+    image: fredcc/buzzbird_worker_ci
 #    command: python3 manage.py qcluster

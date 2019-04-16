@@ -1,3 +1,5 @@
 #!/bin/bash
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker push fredcc/buzzbird
+docker tag buzzbird_buzzbird_worker_ci:latest 
+docker push fredcc/buzzbird_app_ci
+docker push fredcc/buzzbird_worker_ci
