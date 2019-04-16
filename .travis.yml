@@ -4,7 +4,8 @@ env:
   COMPOSE_VERSION: 1.18.0
 before_install:
 - openssl aes-256-cbc -K $encrypted_118398becd95_key -iv $encrypted_118398becd95_iv
-  -in travis.enc -out travis -d
+  -in travis.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
 - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname
   -s`-`uname -m` > docker-compose
 - chmod +x docker-compose
