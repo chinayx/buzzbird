@@ -2,8 +2,8 @@ version: '3.3'
 
 services:
   buzzbird_app_ci:
-    env_file:
-      - .env
+#    env_file:
+#      - .env
     restart: always
     ports:
       - 3000:3000
@@ -12,13 +12,13 @@ services:
     build: .
     hostname: buzzbird_app_ci
     command: bash app.sh
-    network_mode: my-net
+#    network_mode: my-net
 
   buzzbird_worker_ci:
-    env_file:
-      - .env
+#    env_file:
+#      - .env
     restart: always
     build: .
     depends_on:
       - buzzbird_app_ci
-    command: python3 manage.py qcluster
+#    command: python3 manage.py qcluster
