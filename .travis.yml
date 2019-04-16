@@ -11,7 +11,7 @@ before_install:
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
 addons:
-  ssh_known_hosts: 139.162.68.49
+  ssh_known_hosts: $ssh_host
 script:
 - docker-compose build
 deploy:
